@@ -16,6 +16,4 @@ This project is made to be designed and correctly appear on most popular screen 
 
 This webpage is deployed to GitHub Pages
 
-- Deployment Link: https://github.com/vkrobbins/se_project_spots
-- OR : https://vkrobbins.github.io/se_projects_spots/
-  
+- Deployment Link: (https://vkrobbins.github.io/se_project_spots/)
