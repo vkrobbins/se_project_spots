@@ -8,6 +8,7 @@ display: flex;
   display: block;
   border-radius: 8px;
   margin-bottom: 12px;
+  object-fit: cover;
 }
 
 .card__content {
@@ -21,7 +22,7 @@ display: flex;
 .card__title {
   padding: 0;
   margin: 0;
-  max-width: 627px;
+  max-width: 324px;
   font-family: "Poppins";
   font-size: 20px;
   line-height: 1.2;
@@ -48,6 +49,7 @@ display: flex;
 
 @media screen and (max-width: 627px) {
   .card__image {
+    max-width: 224px;
     height: 288px;
   }
 }
