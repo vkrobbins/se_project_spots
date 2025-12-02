@@ -1,10 +1,10 @@
 .card {
-  width: 413px;
+display: flex;
+  flex-direction: column;
 }
 
 .card__image {
-width: 413px;
-height: 413px;
+  height: 413px;
   display: block;
   border-radius: 8px;
   margin-bottom: 12px;
@@ -21,6 +21,7 @@ height: 413px;
 .card__title {
   padding: 0;
   margin: 0;
+  max-width: 627px;
   font-family: "Poppins";
   font-size: 20px;
   line-height: 1.2;
