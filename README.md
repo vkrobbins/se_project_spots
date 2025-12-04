@@ -18,4 +18,6 @@ This webpage is deployed to GitHub Pages
 
 - Deployment Link: https://vkrobbins.github.io/se_project_spots/
   
-- Deployment Link: (https://vkrobbins.github.io/se_project_spots/)
+## Project Pitch Video
+
+Check out my video: https://drive.google.com/file/d/1QdeuuFvg2hx5QCh3ZgWzvpd2BUXnv18Y/view?usp=sharing , where I describe my project and some challenges I faced while building it.
