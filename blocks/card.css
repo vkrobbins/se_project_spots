@@ -24,7 +24,7 @@ display: flex;
   margin: 0;
   max-width: 324px;
   font-family: "Poppins";
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.2;
   font-weight: 500;
   color: #212121;
@@ -38,7 +38,6 @@ display: flex;
   width: 23px;
   height: 20px;
   border: none;
-  background-size: 18px;
   background-repeat: no-repeat;
   background-color: transparent;
   opacity: 40%;
@@ -50,6 +49,14 @@ display: flex;
 }
 
 @media screen and (max-width: 627px) {
+  .card__title {
+    font-size: 16px;
+  }
+
+  .card__like-btn {
+    background-size: 18px;
+    background-repeat: no-repeat;
+  }
   .card__image {
     height: 288px;
   }
