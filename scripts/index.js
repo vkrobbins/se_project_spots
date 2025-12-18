@@ -12,6 +12,9 @@ const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
+const addCardFormEl = newPostModal.querySelector(".modal__form");
+const cardImageInput = newPostModal.querySelector("#card-image-input");
+
 editProfileBtn.addEventListener("click",  function() {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
@@ -28,6 +31,14 @@ newPostBtn.addEventListener("click",  function () {
 
 newPostCloseBtn.addEventListener("click", function () {
   newPostModal.classList.remove("modal_is-opened");
+});
+
+addCardFormEl.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  const imageUrl = cardImageInput.value;
+  addCard({ link: imageUrl, name: "New Post" });
+  newPostModal.classList.remove("modal_is-opened");
+  addCardFormEl.reset();
 });
 
 function handleProfileFormSubmit(evt) {
