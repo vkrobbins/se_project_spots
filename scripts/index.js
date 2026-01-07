@@ -58,7 +58,7 @@ const cardsList = document.querySelector(".cards__list");
   });
 
 function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
+  let cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
 
@@ -116,12 +116,10 @@ newPostCloseBtn.addEventListener("click", function () {
 addCardFormEl.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
-  const inputValues = {
+  const cardElement = getCardElement({
     name: cardCaptionInput.value,
     link: cardImageInput.value,
-  };
-
-  const cardElement = getCardElement(inputValues);
+  });
   cardsList.prepend(cardElement);
 
   const imageUrl = cardImageInput.value;
