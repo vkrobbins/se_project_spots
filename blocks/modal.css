@@ -1,7 +1,7 @@
 .modal {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.5s,opacity 0.5s linear;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
   background-color: #00000080;
   position: fixed;
   top: 0;
@@ -107,6 +107,9 @@ box-sizing: border-box;
   color: #ff0000;
   font-size: 16px;
   margin-top: 4px;
+  display: none;
+}
+.modal__error_visible {
   display: block;
 }
 
@@ -122,6 +125,12 @@ box-sizing: border-box;
 
 .modal__submit-btn:hover {
   opacity: 0.8;
+}
+
+.modal__submit-btn_disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .modal__image-container {

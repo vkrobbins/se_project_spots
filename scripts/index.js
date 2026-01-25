@@ -3,8 +3,7 @@ const initialCards = [
   {
     name: "Golden Gate Bridge",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-  },
-  {
+},  {
   name: "Val Thorens",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
 },  {
@@ -19,8 +18,7 @@ const initialCards = [
 },  {
   name: "Tunnel with morning light",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-},
-  {
+}, {
   name: "Mountain house",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
 },
@@ -90,16 +88,35 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+
+  modal.addEventListener("click", handleOverlayClick);
+
+  document.addEventListener("keydown", handleEscapeKey);
+
+  function handleEscapeKey(evt) {
+    if (evt.key === "Escape") {
+      const openModal = document.querySelector(".modal_is-opened");
+      closeModal(openModal);
+      document.removeEventListener("keydown", handleEscapeKey);
+    }
+  }
+
+  function handleOverlayClick(evt) {
+    if (evt.target.classList.contains("modal")) {
+      closeModal(evt.target);
+      modal.removeEventListener("click", handleOverlayClick);
+  }
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  }
 }
 
 editProfileBtn.addEventListener("click",  function() {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-  resetValidation(profileForm, [nameInput, descriptionInput], cardSubmitBtn);
+  resetValidation(profileForm, config);
   openModal(editProfileModal);
 });
 
@@ -138,7 +155,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  disableSubmitButton(profileForm, cardSubmitBtn);
+  toggleButtonState(config, profileInputs, profileSubmitBtn);
   closeModal(editProfileModal);
 }
 
