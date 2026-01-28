@@ -92,31 +92,34 @@ function openModal(modal) {
   modal.addEventListener("click", handleOverlayClick);
 
   document.addEventListener("keydown", handleEscapeKey);
+}
 
-  function handleEscapeKey(evt) {
-    if (evt.key === "Escape") {
-      const openModal = document.querySelector(".modal_is-opened");
-      closeModal(openModal);
-      document.removeEventListener("keydown", handleEscapeKey);
+function handleEscapeKey(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) {
+      closeModal(openedModal);
     }
   }
+}
 
-  function handleOverlayClick(evt) {
-    if (evt.target.classList.contains("modal")) {
-      closeModal(evt.target);
-      modal.removeEventListener("click", handleOverlayClick);
+function handleOverlayClick(evt) {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
   }
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-  }
+  document.removeEventListener("keydown", handleEscapeKey);
+  modal.removeEventListener("click", handleOverlayClick);
 }
+
 
 editProfileBtn.addEventListener("click",  function() {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-  resetValidation(profileForm, config);
+  resetValidation(profileForm, settings);
   openModal(editProfileModal);
 });
 
@@ -155,7 +158,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  toggleButtonState(config, profileInputs, profileSubmitBtn);
+  toggleButtonState(settings, profileInputs, profileSubmitBtn);
   closeModal(editProfileModal);
 }
 
