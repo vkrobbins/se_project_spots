@@ -149,6 +149,7 @@ addCardFormEl.addEventListener("submit", function (evt) {
   const caption = cardCaptionInput.value;
   closeModal(newPostModal);
   addCardFormEl.reset();
+  resetValidation(addCardFormEl, settings);
 
   console.log(imageUrl);
   console.log(caption);

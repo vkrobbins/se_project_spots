@@ -8,25 +8,25 @@ const settings = {
 };
 
 
-const showInputError = (formEl, inputEl, errorMsg) => {
+const showInputError = (formEl, inputEl, errorMsg, settings) => {
   const errorMsgEl = inputEl.nextElementSibling;
-  errorMsgEl.textContent = inputEl.validationMessage;
-  inputEl.classList.add(config.inputErrorClass);
+  errorMsgEl.textContent = errorMsg;
+  inputEl.classList.add(settings.inputErrorClass);
 };
 
 const checkInputValidity = (formEl, inputEl, settings) => {
   if (!inputEl.validity.valid) {
-    showInputError(formEl, inputEl, inputEl.validationMessage);
+    showInputError(formEl, inputEl, inputEl.validationMessage, settings);
   } else {
     hideInputError(formEl, inputEl);
   }
 };
 
-const hideInputError = (formEl, inputEl, config) => {
+const hideInputError = (formEl, inputEl, settings) => {
   const errorMsgEl = inputEl.nextElementSibling;
   errorMsgEl.textContent = '';
-  errorMsgEl.classList.remove(config.errorClass);
-  inputEl.classList.remove(config.inputErrorClass);
+  errorMsgEl.classList.remove(settings.errorClass);
+  inputEl.classList.remove(settings.inputErrorClass);
 };
 
 const hasInvalidInput = (inputList) => {
