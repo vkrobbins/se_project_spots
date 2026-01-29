@@ -30,6 +30,7 @@ const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const profileForm = editProfileModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector("#profile-name-input");
 const editProfileDescriptionInput = editProfileModal.querySelector("#profile-description-input");
+const profileInputs = [editProfileNameInput, editProfileDescriptionInput];
 
 const newPostBtn = document.querySelector(".profile__new-post-btn");
 const newPostModal = document.querySelector("#new-post-modal");
@@ -158,7 +159,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  toggleButtonState(settings, profileInputs, profileSubmitBtn);
+  toggleButtonState(settings, [editProfileNameInput, editProfileDescriptionInput], profileSubmitBtn);
   closeModal(editProfileModal);
 }
 

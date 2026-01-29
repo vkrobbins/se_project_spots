@@ -14,7 +14,7 @@ const showInputError = (formEl, inputEl, errorMsg) => {
   inputEl.classList.add(config.inputErrorClass);
 };
 
-const checkInputValidity = (formEl, inputEl) => {
+const checkInputValidity = (formEl, inputEl, settings) => {
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage);
   } else {
@@ -62,30 +62,18 @@ const setEventListeners = (formElement, settings) => {
   const submitButton = formElement.querySelector(settings.submitButtonSelector);
 
 toggleButtonState(inputList, submitButton, settings);
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, submitButton);
-    });
+inputList.forEach((inputElement) => {
+  inputElement.addEventListener("input", () => {
+    checkInputValidity(formElement, inputElement, settings);
+    toggleButtonState(inputList, submitButton, settings);
   });
+});
 };
 
 const enableValidation = (settings) => {
   const forms = document.querySelectorAll(settings.formSelector);
-
   forms.forEach((form) => {
-    form.addEventListener('input', () => {
-      const inputs = form.querySelectorAll(settings.inputSelector);
-      let isFormValid = true;
-      inputs.forEach((input) => {
-        const errorElement = input.nextElementSibling;
-        if (input.validity.valid) {
-          errorElement.textContent = '';
-        } else {
-          errorElement.textContent = input.validationMessage;
-        }
-      });
-    });
+    setEventListeners(form, settings);
   });
 };
 
